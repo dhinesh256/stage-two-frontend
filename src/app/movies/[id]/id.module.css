@@ -1,0 +1,73 @@
+.sideBarContainer {
+    width: 17%;
+    height: 100vmin;
+    border-top-right-radius: 50px;
+    border: 1px solid #000;
+    background-color: white;
+}
+
+.logoContainer {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding: 10%;
+    width: 100%;
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.menuContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 35%;
+}
+
+.menuField {
+    position: relative;
+    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5%;
+    color: #666;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
+
+.menuField:active {
+    border-right: 2px solid rgb(129, 11, 50);
+    color: rgb(129, 11, 50);
+}
+
+
+.idField {
+    width: 83%;
+    background-color: white;
+}
+
+.idDetails {
+    color: #404040;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-inline: 25px;
+}
+
+.idOverview {
+    margin: 25px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+}

@@ -1,95 +1,51 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './page.module.css'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import MovieCard from '@/components/MovieCard'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
+
+  let [topMovies, setTopMovies] = useState([])
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmOTdiYTIwYzVjZDdjMGUzNzJmMWQwMGU4OTdhZDc0NCIsInN1YiI6IjY1MDQ4Y2NkNzk4ZTA2MDBjYTFkMmQzZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fSqhDHpgxuaI3UH-wgUKlgW807v97LWNDg4cq7rLH9w'
+    }
+  };
+
+  
+  useEffect(() => {
+    fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
+    .then(response => response.json())
+    .then(response => setTopMovies(response.results.slice(0, 10)))
+    .catch(err => console.error(err));
+  }, [])
+
+  console.log(topMovies)
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+      <Header />
+
+      <h3 style={{ padding: "7%" }}>Featured movies</h3>
+      <div style={{display:"flex",justifyContent:"center",alignItems:'center'}}>
+        <div className={styles.grid}>
+          {topMovies.map((movie) =>
+            <MovieCard
+              id={movie.id}
+              title={movie.title}
+              releaseDate={movie.release_date}
+              posterPath={movie.poster_path}
             />
-          </a>
+          )}
         </div>
+
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
   )
 }

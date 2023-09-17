@@ -1,47 +1,12 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
-}
-
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
-}
-
-.description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.description p {
-  position: relative;
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
-}
-
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
+  height: 100%;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(25%, auto));
+  border-color: brown;
+  gap: 10px;
   max-width: 100%;
   width: var(--max-width);
 }
@@ -49,9 +14,11 @@
 .card {
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
+  background-color: bisque;
+  box-shadow: 0px;
+  border:   1px solid rgba(0, 0, 0, 0.8);
   transition: background 200ms, border 200ms;
+
 }
 
 .card span {
@@ -211,6 +178,7 @@
 
 @media (prefers-color-scheme: dark) {
   .vercelLogo {
+    padding: 10px;
     filter: invert(1);
   }
 

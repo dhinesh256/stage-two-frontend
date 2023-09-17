@@ -1,0 +1,48 @@
+.searchContainer {
+    display: flex;
+    border: 1.5px solid white;
+    border-radius: 10px;
+
+}
+.inputField {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    color: white;
+    padding: 3%;
+
+}
+
+input.inputField:focus {
+    outline: none
+}
+
+input.inputField::placeholder {
+    color: white;
+    font-size: 1.2em;
+    font-style: italic;
+  }
+
+.resultContainer {
+    z-index: 100;
+    position: fixed;
+    width: 80%;
+    display: flex;
+    left: 100px;
+    flex-direction: row;
+    color: black;
+    box-shadow: 0px 0px 8px #ddd;
+    border-radius: 15px;
+    background-color: white;
+    margin-top: 3%;
+    padding: 1%;
+    max-height: 600px;
+    overflow-x: scroll;
+}
+
+.gridContainer {
+    display: grid;
+  grid-template-columns: repeat(4, minmax(25%, auto));
+  border-color: brown;
+  gap: 10px;
+}
