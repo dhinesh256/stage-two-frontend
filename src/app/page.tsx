@@ -35,12 +35,14 @@ export default function Home() {
       <div style={{display:"flex",justifyContent:"center",alignItems:'center'}}>
         <div className={styles.grid}>
           {topMovies.map((movie: { id: any; title: any; release_date: any; poster_path: any }) =>
+          <div key={movie.id}>
             <MovieCard
               id={movie.id}
               title={movie.title}
               releaseDate={movie.release_date}
               posterPath={movie.poster_path}
             />
+          </div>
           )}
         </div>
 

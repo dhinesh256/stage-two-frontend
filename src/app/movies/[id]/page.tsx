@@ -12,7 +12,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 
-const page = ( params: any ) => {
+const MovieId = ( params: any ) => {
 
     const [movieDetails, setMovieDetails] = useState({} as any)
 
@@ -122,4 +122,4 @@ const page = ( params: any ) => {
     )
 }
 
-export default page
+export default MovieId

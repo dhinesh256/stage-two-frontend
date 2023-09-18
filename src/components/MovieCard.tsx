@@ -17,7 +17,7 @@ export default function MovieCard(props: any) {
     const { title, releaseDate, posterPath, id } = props
     const isSearch = props?.isSearch
     return (
-        <div style={{ width: "245px", height: "375px" }}>
+        <div style={{ width: "245px", height: "375px" }} key={title}>
             { !isSearch ? <div style={{ position: "relative" }}>
                 <div className={styles.favouriteIcon}>
                     <Image
