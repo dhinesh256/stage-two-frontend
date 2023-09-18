@@ -26,7 +26,6 @@ export default function Home() {
     .catch(err => console.error(err));
   }, [])
 
-  console.log(topMovies)
   return (
     <main className={styles.main}>
       <Header />

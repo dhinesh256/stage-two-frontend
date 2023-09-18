@@ -10,11 +10,14 @@ import upcoming from "../../../assets/Calendar.png"
 import play from '../../../assets/Play.png'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Loading from '@/components/Loading'
 
 
-const MovieId = ( params: any ) => {
+const MovieId = ( {params}: any ) => {
 
     const [movieDetails, setMovieDetails] = useState({} as any)
+    const [isLoading, setIsLoading] = useState(true)
+
 
     const imageLoader = ({ src, width, quality }: any) => {
         return `https://image.tmdb.org/t/p/original/${src}`
@@ -31,11 +34,13 @@ const MovieId = ( params: any ) => {
 
         fetch(`https://api.themoviedb.org/3/movie/${params.id}`, options)
             .then(response => response.json())
-            .then(response => setMovieDetails(response))
+            .then(response => {
+                setMovieDetails(response)
+                setIsLoading(false)
+            })
             .catch(err => console.error(err));
     }, [params.id])
 
-    console.log(movieDetails)
     return (
         <div style={{ display: "flex", flexDirection: 'row' ,backgroundColor: 'white'}}>
             <div className={styles.sideBarContainer}>
@@ -93,6 +98,8 @@ const MovieId = ( params: any ) => {
 
                 </div>
             </div>
+            {isLoading ? <Loading/>
+            :
             <div className={styles.idField}>
                 <div style={{ margin: "2%", borderRadius: "10px" }}>
                     <Image
@@ -116,7 +123,7 @@ const MovieId = ( params: any ) => {
                 </div>
 
                 <div data-testid="movie-overview" className={styles.idOverview}>{movieDetails.overview}</div>
-            </div>
+            </div>}
         </div>
 
     )

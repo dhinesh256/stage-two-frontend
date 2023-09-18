@@ -12,7 +12,6 @@ const imageLoader = ({ src, width, quality }: any) => {
 
 const SearchResults = (props: any) => {
 
-  console.log("SearchResults >>",props.result)
   let results = props.result
   return (
     <div className={styles.resultContainer}>
@@ -59,7 +58,6 @@ const SearchBar = () => {
       .catch(err => console.error(err));
   },[queryString])
 
-  console.log("searchResult >>>",searchResult)
   return (
     <div>
       <div className={styles.searchContainer}>
