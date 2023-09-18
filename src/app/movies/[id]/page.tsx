@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+
 import Image from 'next/image'
 import styles from './id.module.css'
 import logo from '../../../assets/logo.png'
@@ -9,11 +9,14 @@ import tv from "../../../assets/TV Show.png"
 import upcoming from "../../../assets/Calendar.png"
 import play from '../../../assets/Play.png'
 import Link from 'next/link'
-const page = ({ params }) => {
+import { useEffect, useState } from 'react'
 
-    const [movieDetails, setMovieDetails] = useState({})
 
-    const imageLoader = ({ src, width, quality }) => {
+const page = ( params: any ) => {
+
+    const [movieDetails, setMovieDetails] = useState({} as any)
+
+    const imageLoader = ({ src, width, quality }: any) => {
         return `https://image.tmdb.org/t/p/original/${src}`
     }
 
@@ -30,7 +33,7 @@ const page = ({ params }) => {
             .then(response => response.json())
             .then(response => setMovieDetails(response))
             .catch(err => console.error(err));
-    }, [])
+    }, [params.id])
 
     console.log(movieDetails)
     return (
@@ -120,33 +123,3 @@ const page = ({ params }) => {
 }
 
 export default page
-
-// movieDetails ? (<div>
-//     <div>{params.id}</div>
-//     <div data-testid="movie-title">{movieDetails.title}</div>
-//     <div data-testid="movie-release-date">{movieDetails.release_data}</div>
-//     <div data-testid="movie-runtime">{movieDetails.runtime}</div>
-//     <div data-testid="movie-overview">{movieDetails.overview}</div>
-//     <div>
-//         <Image
-//             loader={imageLoader}
-//             src={movieDetails.poster_path}
-//             alt={movieDetails.title}
-//             width={200}
-//             height={295}
-//             priority
-//             data-testid="movie-poster"
-//         />
-//     </div>
-//     <div>
-//     <Image
-//             loader={imageLoader}
-//             src={movieDetails.backdrop_path}
-//             alt={movieDetails.title}
-//             width={"500"}
-//             height={500}
-//             priority
-//             data-testid="movie-poster"
-//         />
-//     </div>
-// </div>) : <></>

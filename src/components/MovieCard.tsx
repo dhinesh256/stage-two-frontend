@@ -11,7 +11,7 @@ interface Props {
 }
 export default function MovieCard(props: any) {
 
-    const imageLoader = ({ src, width, quality }) => {
+    const imageLoader = ({ src, width, quality }: any) => {
         return `https://image.tmdb.org/t/p/w500/${src}`
     }
     const { title, releaseDate, posterPath, id } = props

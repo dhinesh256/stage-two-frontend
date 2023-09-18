@@ -5,7 +5,7 @@ import styles from './searchbar.module.css'
 import searchIcon from '../assets/search-icon.svg'
 import MovieCard from './MovieCard'
 
-const imageLoader = ({ src, width, quality }) => {
+const imageLoader = ({ src, width, quality }: any) => {
   return `https://image.tmdb.org/t/p/w500/${src}`
 }
 
@@ -17,9 +17,9 @@ const SearchResults = (props: any) => {
   return (
     <div className={styles.resultContainer}>
     {
-      results?.map((result) => 
+      results?.map((result: { id: any; poster_path: any; title: any; release_date: any }) => 
       (result.id && result.poster_path ) &&
-        <div style={{marginInline:"1%"}}>
+        <div style={{marginInline:"1%"}} key={result.id}>
 
         <MovieCard
         id={result?.id}

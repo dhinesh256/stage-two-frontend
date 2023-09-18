@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react'
 
 export default function Home() {
 
-  let [topMovies, setTopMovies] = useState([])
+  let [topMovies, setTopMovies] = useState([] as any)
   const options = {
     method: 'GET',
     headers: {
@@ -34,7 +34,7 @@ export default function Home() {
       <h3 style={{ padding: "7%" }}>Featured movies</h3>
       <div style={{display:"flex",justifyContent:"center",alignItems:'center'}}>
         <div className={styles.grid}>
-          {topMovies.map((movie) =>
+          {topMovies.map((movie: { id: any; title: any; release_date: any; poster_path: any }) =>
             <MovieCard
               id={movie.id}
               title={movie.title}
